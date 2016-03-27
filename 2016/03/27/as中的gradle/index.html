@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="as gradle," />
 
 
 
@@ -57,33 +57,22 @@
 
 
 
-<meta name="description" content="1，搭建环境首先多Hexo概念做个粗略浏览，了解搭建Hexo需要依赖Node和Git，所以前期准备homebrew下载Node（homebrew大神创造的神器，让后人是多么享受这种无痛连接带来的清爽感啊！拜谢)
-2，下载Hexo  
-1$ sudo npm install -g hexo
-3，按照部署依赖文件 
-1$ npm install
-4，在用户目录下创建文件夹，cd到此文件目录下，执行命令">
+<meta name="description" content="##使用AS中遇到gradle不是全局命令解决办法
+因为AS下载的gradle（此gradle并非是集成在as中的插件）存放目录为(/Users/wwd/.gradle/wrapper/dists/gradle-2.10-all/a4w5fzrkeut1ox71xslb49gst/gradle-2.10;)所以需配置如下环境变量即可运行全局命令
+123GRADLE_HOME=/Users/wwd/">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac下Hexo+GitHub搭建博客图文教程">
-<meta property="og:url" content="http://yoursite.com/2016/03/26/hexo-学习笔记/index.html">
+<meta property="og:title" content="as中的gradle_home">
+<meta property="og:url" content="http://yoursite.com/2016/03/27/as中的gradle/index.html">
 <meta property="og:site_name" content="省事是清心之法，读书是省事之法。 曾国藩">
-<meta property="og:description" content="1，搭建环境首先多Hexo概念做个粗略浏览，了解搭建Hexo需要依赖Node和Git，所以前期准备homebrew下载Node（homebrew大神创造的神器，让后人是多么享受这种无痛连接带来的清爽感啊！拜谢)
-2，下载Hexo  
-1$ sudo npm install -g hexo
-3，按照部署依赖文件 
-1$ npm install
-4，在用户目录下创建文件夹，cd到此文件目录下，执行命令">
-<meta property="og:image" content="http://yoursite.com/uploads/mulu.png">
-<meta property="og:updated_time" content="2016-03-26T11:31:20.000Z">
+<meta property="og:description" content="##使用AS中遇到gradle不是全局命令解决办法
+因为AS下载的gradle（此gradle并非是集成在as中的插件）存放目录为(/Users/wwd/.gradle/wrapper/dists/gradle-2.10-all/a4w5fzrkeut1ox71xslb49gst/gradle-2.10;)所以需配置如下环境变量即可运行全局命令
+123GRADLE_HOME=/Users/wwd/">
+<meta property="og:updated_time" content="2016-03-27T12:15:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac下Hexo+GitHub搭建博客图文教程">
-<meta name="twitter:description" content="1，搭建环境首先多Hexo概念做个粗略浏览，了解搭建Hexo需要依赖Node和Git，所以前期准备homebrew下载Node（homebrew大神创造的神器，让后人是多么享受这种无痛连接带来的清爽感啊！拜谢)
-2，下载Hexo  
-1$ sudo npm install -g hexo
-3，按照部署依赖文件 
-1$ npm install
-4，在用户目录下创建文件夹，cd到此文件目录下，执行命令">
-<meta name="twitter:image" content="http://yoursite.com/uploads/mulu.png">
+<meta name="twitter:title" content="as中的gradle_home">
+<meta name="twitter:description" content="##使用AS中遇到gradle不是全局命令解决办法
+因为AS下载的gradle（此gradle并非是集成在as中的插件）存放目录为(/Users/wwd/.gradle/wrapper/dists/gradle-2.10-all/a4w5fzrkeut1ox71xslb49gst/gradle-2.10;)所以需配置如下环境变量即可运行全局命令
+123GRADLE_HOME=/Users/wwd/">
 
 
 
@@ -101,7 +90,7 @@
   };
 </script>
 
-  <title> Mac下Hexo+GitHub搭建博客图文教程 | 省事是清心之法，读书是省事之法。 曾国藩 </title>
+  <title> as中的gradle_home | 省事是清心之法，读书是省事之法。 曾国藩 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -251,7 +240,7 @@
             
             
               
-                Mac下Hexo+GitHub搭建博客图文教程
+                as中的gradle_home
               
             
           </h1>
@@ -263,8 +252,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-26T17:33:46+08:00" content="2016-03-26">
-              2016-03-26
+            <time itemprop="dateCreated" datetime="2016-03-27T19:07:32+08:00" content="2016-03-27">
+              2016-03-27
             </time>
           </span>
 
@@ -274,8 +263,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/26/hexo-学习笔记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/26/hexo-学习笔记/" itemprop="commentsCount"></span>
+                <a href="/2016/03/27/as中的gradle/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/27/as中的gradle/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -297,30 +286,11 @@
       
 
       
-        <p>1，搭建环境首先多Hexo概念做个粗略浏览，了解搭建Hexo需要依赖Node和Git，所以前期准备homebrew下载Node（homebrew大神创造的神器，让后人是多么享受这种无痛连接带来的清爽感啊！拜谢)</p>
-<p>2，下载Hexo  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo npm install -g hexo</span><br></pre></td></tr></table></figure>
-<p>3，按照部署依赖文件 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
-<p>4，在用户目录下创建文件夹，cd到此文件目录下，执行命令 hexo init</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo hexo init blog</span><br></pre></td></tr></table></figure>
-<p>创建出的目录结构如图  </p>
-<p><img src="uploads/mulu.png" alt="sourece"></p>
-<p>5，生成静态页面  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>6，开启本地服务，进行本地预览</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br><span class="line">$ hexo s --debug</span><br></pre></td></tr></table></figure>
-<hr>
-<p>接下就可以来肆意妄为了，构建自己的blog  </p>
-<p>1，创建自己的repository ，从github上新建个自己的repositoty，格式命名为github用户名.github.io </p>
-<p>2,安装git部署器   </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git -save</span><br></pre></td></tr></table></figure>
-<p>3,修改配置文件  如上图中目录结构里的_config.yml  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: https://github.com/dongzeW/dongzeW.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<p>5，发表自己的文章 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g </span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
-<p><a href="http://yuweiguocn.github.io/2016/02/20/mac-hexo-github-blog-tech" target="_blank" rel="external">参考案例</a></p>
-<p><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">更换主题</a></p>
+        <p>##使用AS中遇到gradle不是全局命令解决办法</p>
+<p>因为AS下载的gradle（此gradle并非是集成在as中的插件）存放目录为(/Users/wwd/.gradle/wrapper/dists/gradle-2.10-all/a4w5fzrkeut1ox71xslb49gst/gradle-2.10;)<br>所以需配置如下环境变量即可运行全局命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GRADLE_HOME=/Users/wwd/.gradle/wrapper/dists/gradle-2.10-all/a4w5fzrkeut1ox71xslb49gst/gradle-2.10;</span><br><span class="line">export GRADLE_HOME</span><br><span class="line">export PATH=$PATH:$GRADLE_HOME/bin</span><br></pre></td></tr></table></figure>
+<p>如果不配置gradle环境变量可以在AS的控制台中利用./gradlew命令执行</p>
+<p>AS gradle插件 gradle 构成了可以执行的针对构建android的命令</p>
 
       
     </div>
@@ -333,22 +303,24 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/as-gradle/" rel="tag">#as gradle</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/26/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2016/03/27/AndroidStuio每次升级带来的烦恼/" rel="next" title="AndroidStuio每次升级带来的烦恼">
+                <i class="fa fa-chevron-left"></i> AndroidStuio每次升级带来的烦恼
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/27/AndroidStuio每次升级带来的烦恼/" rel="prev" title="AndroidStuio每次升级带来的烦恼">
-                AndroidStuio每次升级带来的烦恼 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -377,8 +349,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/03/26/hexo-学习笔记/"
-           data-title="Mac下Hexo+GitHub搭建博客图文教程" data-url="http://yoursite.com/2016/03/26/hexo-学习笔记/">
+      <div class="ds-thread" data-thread-key="2016/03/27/as中的gradle/"
+           data-title="as中的gradle_home" data-url="http://yoursite.com/2016/03/27/as中的gradle/">
       </div>
     
   </div>
