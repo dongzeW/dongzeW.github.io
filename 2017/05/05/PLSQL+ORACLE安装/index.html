@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="PLSQL InstantClient," />
 
 
 
@@ -57,19 +57,22 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="description" content="###PLSQL64位安装完后，依赖数据库需要做配置基本配置：Tools-&amp;gt;Preferences-&amp;gt;Oracle Home,OCI(Oracle Call Interface) library因为PLSQL需配置对应的数据库配置，此处配置可不安装oracle客户端。具体配置如下  
+Oracle Home：磁盘路径:\instantClient  
+OCI library：磁盘路径:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2016/03/26/hello-world/index.html">
+<meta property="og:title" content="PLSQL安装配置">
+<meta property="og:url" content="http://yoursite.com/2017/05/05/PLSQL+ORACLE安装/index.html">
 <meta property="og:site_name" content="省事是清心之法，读书是省事之法。 曾国藩">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2016-05-21T09:02:33.000Z">
+<meta property="og:description" content="###PLSQL64位安装完后，依赖数据库需要做配置基本配置：Tools-&amp;gt;Preferences-&amp;gt;Oracle Home,OCI(Oracle Call Interface) library因为PLSQL需配置对应的数据库配置，此处配置可不安装oracle客户端。具体配置如下  
+Oracle Home：磁盘路径:\instantClient  
+OCI library：磁盘路径:">
+<meta property="og:updated_time" content="2017-05-05T09:19:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="PLSQL安装配置">
+<meta name="twitter:description" content="###PLSQL64位安装完后，依赖数据库需要做配置基本配置：Tools-&amp;gt;Preferences-&amp;gt;Oracle Home,OCI(Oracle Call Interface) library因为PLSQL需配置对应的数据库配置，此处配置可不安装oracle客户端。具体配置如下  
+Oracle Home：磁盘路径:\instantClient  
+OCI library：磁盘路径:">
 
 
 
@@ -87,7 +90,7 @@ Quick">
   };
 </script>
 
-  <title> Hello World | 省事是清心之法，读书是省事之法。 曾国藩 </title>
+  <title> PLSQL安装配置 | 省事是清心之法，读书是省事之法。 曾国藩 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -237,7 +240,7 @@ Quick">
             
             
               
-                Hello World
+                PLSQL安装配置
               
             
           </h1>
@@ -249,8 +252,8 @@ Quick">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-26T14:24:13+08:00" content="2016-03-26">
-              2016-03-26
+            <time itemprop="dateCreated" datetime="2017-05-05T15:37:59+08:00" content="2017-05-05">
+              2017-05-05
             </time>
           </span>
 
@@ -260,8 +263,8 @@ Quick">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/26/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/26/hello-world/" itemprop="commentsCount"></span>
+                <a href="/2017/05/05/PLSQL+ORACLE安装/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/05/PLSQL+ORACLE安装/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -283,15 +286,11 @@ Quick">
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>###PLSQL64位安装完后，依赖数据库需要做配置<br>基本配置：Tools-&gt;Preferences-&gt;Oracle Home,OCI(Oracle Call Interface) library<br>因为PLSQL需配置对应的数据库配置，此处配置可不安装oracle客户端。具体配置如下  </p>
+<pre><code>Oracle Home：磁盘路径:\instantClient  
+OCI library：磁盘路径:\instantClient\oci.dll
+</code></pre><p>遇到的问题，需配置ODBC数据源管理程序<br>cmd运行命令，<code>odbcad32</code> 打开ODBC数据源管理程序<br>添加一个excellocal 32位 driver do Microsoft Excel(.xls)，配置完后即可import excel文件</p>
+<p>###利用PLSQL导入excel数据<br>导入cvs格式的数据到oracle，Data from Textfile<br>Tools-&gt;Text Importer-&gt;Open data file<br>选择对应的cvs文件，添加进来后，选择Data to Oracle <code>oracle数据库应该创建好对应的数据库表，且表结构和cvs表头属性字段一一对应</code>随后Import即可</p>
 
       
     </div>
@@ -304,18 +303,24 @@ Quick">
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/PLSQL-InstantClient/" rel="tag">#PLSQL InstantClient</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/03/27/as中的gradle/" rel="next" title="as中的gradle_home">
+                <i class="fa fa-chevron-left"></i> as中的gradle_home
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/26/hexo-学习笔记/" rel="prev" title="Mac下Hexo+GitHub搭建博客图文教程">
-                Mac下Hexo+GitHub搭建博客图文教程 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -344,8 +349,8 @@ Quick">
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/03/26/hello-world/"
-           data-title="Hello World" data-url="http://yoursite.com/2016/03/26/hello-world/">
+      <div class="ds-thread" data-thread-key="2017/05/05/PLSQL+ORACLE安装/"
+           data-title="PLSQL安装配置" data-url="http://yoursite.com/2017/05/05/PLSQL+ORACLE安装/">
       </div>
     
   </div>
@@ -434,7 +439,7 @@ Quick">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
