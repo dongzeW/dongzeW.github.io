@@ -296,14 +296,97 @@
 <p>h5用到的框架包括,vue、angular</p>
 <p>###Android项目结构<br>项目主要采用的是mvp的设计模式</p>
 <p><img src="uploads/mvp.png" alt="sourece"></p>
-<p>用的的三方支持库，包括：</p>
+<p>用到的三方支持库，包括：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">logger: &apos;com.orhanobut:logger:2.1.1&apos;,</span><br><span class="line">rxjava: &apos;io.reactivex.rxjava2:rxjava:2.1.5&apos;,</span><br><span class="line">rxandroid: &apos;io.reactivex.rxjava2:rxandroid:2.0.1&apos;,</span><br><span class="line">rxadapter: &apos;com.squareup.retrofit2:adapter-rxjava2:2.3.0&apos;,</span><br><span class="line">fastjson: &apos;com.alibaba:fastjson:1.1.65.android&apos;,</span><br><span class="line">retrofit: &apos;com.squareup.retrofit2:adapter-rxjava:2.3.0&apos;,</span><br><span class="line">logging_interceptor: &apos;com.squareup.okhttp3:logging-interceptor:3.5.0&apos;,</span><br><span class="line">hawk: &apos;com.orhanobut:hawk:2.0.1&apos;,</span><br><span class="line">eventbus: &apos;org.greenrobot:eventbus:3.0.0&apos;,</span><br><span class="line">glide: &apos;com.github.bumptech.glide:glide:4.3.1&apos;,</span><br><span class="line">//recycler适配器</span><br><span class="line">adapterdelegates3: &apos;com.hannesdorfmann:adapterdelegates3:3.0.1&apos;,</span><br><span class="line">//可拖动的gridview</span><br><span class="line">dynamicgridview: &apos;com.wwd:dynamicgrid:1.0.3&apos;,</span><br><span class="line">//recyclerview</span><br><span class="line">recycleradapter: &apos;com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.33&apos;,</span><br><span class="line">//上拉下拉</span><br><span class="line">refreshrecycler: &apos;com.github.anzaizai:EasyRefreshLayout:1.3.1&apos;,</span><br><span class="line">//图片选择器</span><br><span class="line">imagepicker: &apos;com.lzy.widget:imagepicker:0.6.1&apos;,</span><br><span class="line">// 垂直滚动的textview</span><br><span class="line">autov: &apos;com.github.paradoxie:AutoVerticalTextview:0.1&apos;,</span><br><span class="line">//微信分享</span><br><span class="line">wechat: &apos;com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+&apos;,</span><br><span class="line">//轮播图</span><br><span class="line">banner: &apos;com.bigkoo:convenientbanner:2.0.5&apos;,</span><br><span class="line">jpush: &apos;cn.jiguang.sdk:jpush:3.1.0&apos;,</span><br><span class="line">jcore: &apos;cn.jiguang.sdk:jcore:1.1.8&apos;,</span><br><span class="line">rxpermissions: &apos;com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar&apos;,</span><br><span class="line">tablayout: &apos;me.weyye.ColorTrackTabLayout:library:1.0.1&apos;,</span><br><span class="line">flowlayout: &apos;com.hyman:flowlayout-lib:1.1.2&apos;,</span><br><span class="line">umeng_common: &apos;com.umeng.sdk:common:latest.integration&apos;,</span><br><span class="line">umeng_analytics: &apos;com.umeng.sdk:analytics:latest.integration&apos;</span><br></pre></td></tr></table></figure>
 <p>整体的目录结果如图 </p>
 <p><img src="uploads/app_arm.jpg" alt="sourece"></p>
-<p>####gradle的配置及使用<br>主要的官方网址<br><a href="http://search.maven.org/" target="_blank" rel="external">mavenCenter</a>:版本查询库，能够查看当前所需依赖库的最新版本及之前发布过的所有历史版本</p>
-<p><img src="uploads/maven.jpg" alt="sourece"></p>
-<p>GroupID：项目组织唯一的标识符，对应JAVA的包名<br>ArtifactID：项目的唯一的标识符，实际对应项目的名称<br>Latest Version：最新版本，点击all可以查看历史版本<br>如果maven库里查询不到的库，可以去<br><a href="https://bintray.com/" target="_blank" rel="external">jcenter</a>,还有就是google和其他手动引入的服务器地址  </p>
-<p><a href="https://gradle.org/" target="_blank" rel="external">gradle工具</a><br>AS初始化gradle环境的时候，因从as里下载速度比较慢，需要我们手动下载gradle版本，然后启动as<br><a href="https://gradle.org/releases/" target="_blank" rel="external">gradle版本</a>下载所需的版本，手动放在系统用户目录.gradle/wrapper/dists/gradle-4.8-all/41c9mvq2w0645xx6nsenaerjl/下。<br>gradle/wrapper/gradle-wrapper.properties,用于配置gradle版本</p>
+<ul>
+<li>当applicationId（com.n22.sunshine.jzyx）同 package不同的时候，WXEntryActivity.java微信的分享后的回调类，必须放在以applicationId命名的包的下面，否则无法回调 </li>
+</ul>
+<p>####版本库的配置及使用<br>主要的仓库存储地址包括下面几种</p>
+<table>
+<thead>
+<tr>
+<th>引用仓库名称</th>
+<th>远端仓库地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mavenCentral()</td>
+<td><a href="https://repo1.maven.org/maven2/" target="_blank" rel="external">https://repo1.maven.org/maven2/</a>  </td>
+</tr>
+<tr>
+<td>jcenter()</td>
+<td><a href="https://bintray.com/" target="_blank" rel="external">https://bintray.com/</a>   </td>
+</tr>
+<tr>
+<td>google()</td>
+<td><a href="https://dl.google.com/dl/android/maven2/index.html" target="_blank" rel="external">https://dl.google.com/dl/android/maven2/index.html</a>  </td>
+</tr>
+<tr>
+<td>maven {url ‘’}</td>
+<td>用户自己持有的Maven仓库服务器  </td>
+</tr>
+</tbody>
+</table>
+<p><a href="http://search.maven.org/" target="_blank" rel="external">mavenCenter</a></p>
+<p>远端版本管理库，能够查看当前所需依赖库的最新版本及之前发布过的所有历史版本</p>
+<table>
+<thead>
+<tr>
+<th>GroupID</th>
+<th>ArtifactID</th>
+<th>Latest Version</th>
+<th>Updated</th>
+<th>Download</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>com.github.bumptech.glide</td>
+<td>glide</td>
+<td>4.7.1  all (24)</td>
+<td>14-Apr-2018</td>
+<td>pom  aar  javadoc.jar  sources.jar  </td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GroupID</td>
+<td>项目组织唯一的标识符，对应JAVA的包名   </td>
+</tr>
+<tr>
+<td>ArtifactID</td>
+<td>项目的唯一的标识符，实际对应项目的名称    </td>
+</tr>
+<tr>
+<td>Latest Version</td>
+<td>最新版本，点击all可以查看历史版本     </td>
+</tr>
+<tr>
+<td>Updated</td>
+<td>版本发布日期  </td>
+</tr>
+<tr>
+<td>Download</td>
+<td>下载对应的资源</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://gradle.org/" target="_blank" rel="external">gradle工具</a>   </p>
+<p>AS初始化gradle环境的时候，因从AS里下载速度比较慢，需要我们手动下载gradle版本，放在指定的系统磁盘目录下，然后启动AS。</p>
+<p>手动下载地址<a href="https://gradle.org/releases/" target="_blank" rel="external">gradle版本</a></p>
+<p>.gradle/wrapper/dists/gradle-4.8-all/41c9mvq2w0645xx6nsenaerjl/下。</p>
+<p>gradle/wrapper/gradle-wrapper.properties,用于配置gradle版本</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">在线版本</span><br><span class="line">distributionUrl = https\://services.gradle.org/distributions/gradle-4.8-all.zip     </span><br><span class="line">离线版本 </span><br><span class="line">distributionUrl = file:///本地存放的位置/gradle-4.8-all.zip</span><br></pre></td></tr></table></figure>
 <p>gradle plugin 和 gradle各个版本的对应关系,请严格按照此对应关系，引入版本，因为存在版本兼容性问题  </p>
 <p><img src="uploads/gradle.png" alt="sourece"></p>
