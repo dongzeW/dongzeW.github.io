@@ -74,7 +74,7 @@ app首页如果
 <meta property="og:image" content="http://yoursite.com/uploads/home.jpg">
 <meta property="og:image" content="http://yoursite.com/uploads/mvp.png">
 <meta property="og:image" content="http://yoursite.com/uploads/app_arm.jpg">
-<meta property="og:updated_time" content="2018-08-04T09:34:42.733Z">
+<meta property="og:updated_time" content="2018-08-04T09:44:30.869Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="全能保客户端">
 <meta name="twitter:description" content="####项目整体架构寿险全能保项目，整体上是一个聚合平台，在应用里聚合了如，建议书、寿险出单、车险出单、客户管理、移动柜面等各个其他项目组的项目。为了减少项目之间的耦合，全能保采用混合开发，原生主要搭建整体app运行框架，提供原生的webview浏览器，对接各个系统。
@@ -476,17 +476,13 @@ app首页如果
 <p>WebChromeClient类的主要功能</p>
 <ol>
 <li>用于扩展支持h5的input标签，进行图片的选择和相机的打开，如果h5使用该方式获取图片资源，h5拿到数据后需自己进行图片的压缩处理，否则会因为图片过大，导致不避免的错误发生</li>
-</ol>
-<ul>
 <li>添加webview加载页面时的loading页面</li>
-</ul>
+</ol>
 <p>WebViewClient类的主要功能</p>
 <ol>
 <li>shouldOverrideUrlLoading()方法对sms、tel、mailto等协议的处理</li>
-</ol>
-<ul>
 <li>onPageFinished()页面加载完成后处理标题数据</li>
-</ul>
+</ol>
 <h5 id="交互示例"><a href="#交互示例" class="headerlink" title="交互示例"></a>交互示例</h5><p>h5调用原生分享代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$(function()&#123;</span><br><span class="line">//当分享的url等内容为空，代表不能分享  </span><br><span class="line">var shareDate = &#123;&quot;title&quot;:&quot;&quot;,&quot;content&quot;:&quot;&quot;,&quot;url&quot;:&quot;&quot;,&quot;imagePath&quot;:&quot;&quot;&#125;;  </span><br><span class="line">var u = navigator.userAgent;  </span><br><span class="line">//android终端</span><br><span class="line">var isAndroid = u.indexOf(&apos;Android&apos;) &gt; -1 || u.indexOf(&apos;Adr&apos;) &gt; -1; </span><br><span class="line">//ios终端</span><br><span class="line">var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); </span><br><span class="line">//当shareDate里的参数都有数值，客户端认为可分享</span><br><span class="line">	if(isiOS)&#123;</span><br><span class="line">		appShare(JSON.stringify(shareDate));</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		Native.appShare(JSON.stringify(shareDate));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">function appShare(shareData)&#123;</span><br><span class="line">		window.location.href = &quot;shareWeChat://shareClick？content =&quot;+shareData;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>原生调用h5代码</p>
