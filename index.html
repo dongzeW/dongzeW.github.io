@@ -325,7 +325,7 @@
 <td><a href="https://dl.google.com/dl/android/maven2/index.html" target="_blank" rel="external">https://dl.google.com/dl/android/maven2/index.html</a>  </td>
 </tr>
 <tr>
-<td>maven {url ‘’}</td>
+<td>maven {url ‘链接地址’}</td>
 <td>用户自己持有的Maven仓库服务器  </td>
 </tr>
 </tbody>
@@ -385,22 +385,66 @@
 <p><a href="https://gradle.org/" target="_blank" rel="external">gradle工具</a>   </p>
 <p>AS初始化gradle环境的时候，因从AS里下载速度比较慢，需要我们手动下载gradle版本，放在指定的系统磁盘目录下，然后启动AS。</p>
 <p>手动下载地址<a href="https://gradle.org/releases/" target="_blank" rel="external">gradle版本</a></p>
-<p>.gradle/wrapper/dists/gradle-4.8-all/41c9mvq2w0645xx6nsenaerjl/下。</p>
-<p>gradle/wrapper/gradle-wrapper.properties,用于配置gradle版本</p>
+<p>存放的目录：.gradle/wrapper/dists/gradle-4.8-all/41c9mvq2w0645xx6nsenaerjl/</p>
+<p>项目中用于配置gradle版本文件：gradle/wrapper/gradle-wrapper.properties</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">在线版本</span><br><span class="line">distributionUrl = https\://services.gradle.org/distributions/gradle-4.8-all.zip     </span><br><span class="line">离线版本 </span><br><span class="line">distributionUrl = file:///本地存放的位置/gradle-4.8-all.zip</span><br></pre></td></tr></table></figure>
-<p>gradle plugin 和 gradle各个版本的对应关系,请严格按照此对应关系，引入版本，因为存在版本兼容性问题  </p>
-<p><img src="uploads/gradle.png" alt="sourece"></p>
+<p>gradle plugin 和 gradle各个版本的对应关系,请严格按照此对应关系，引入版本，因为存在版本兼容性问题。</p>
+<table>
+<thead>
+<tr>
+<th>Plugin  version</th>
+<th>Required Gradle version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0.0 - 1.1.3</td>
+<td>2.2.1 - 2.3</td>
+</tr>
+<tr>
+<td>1.2.0 - 1.3.1</td>
+<td>2.2.1 - 2.9</td>
+</tr>
+<tr>
+<td>1.5.0</td>
+<td>2.2.1 - 2.13</td>
+</tr>
+<tr>
+<td>2.0.0 - 2.1.2</td>
+<td>2.10 - 2.13</td>
+</tr>
+<tr>
+<td>2.1.3 - 2.2.3</td>
+<td>2.14.1+</td>
+</tr>
+<tr>
+<td>2.3.0+</td>
+<td>3.3+</td>
+</tr>
+<tr>
+<td>3.0.0+</td>
+<td>4.1+</td>
+</tr>
+<tr>
+<td>3.1.0+</td>
+<td>4.4+</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><a href="https://developer.android.com/studio/releases/gradle-plugin" target="_blank" rel="external">版本关系查询链接地址</a>  </li>
+</ul>
 <p>project下的build.gradle配置全局引用，指定远端仓库地址</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jcenter()</span><br><span class="line">mavenCentral()</span><br><span class="line">google()</span><br><span class="line">maven &#123; url &apos;https://jitpack.io&apos; &#125;</span><br></pre></td></tr></table></figure>
 <p>sinosig.gradle自定义的gradle文件，用于配置项目依赖包</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ext &#123;</span><br><span class="line"> android =[] //包含sdk的版本信息，app的版本配置</span><br><span class="line"> ilibs = [] //项目依赖的包</span><br><span class="line"> supportlibs = [] //com.android.support包，供各个modules使用</span><br><span class="line"> alibs =[] // annotationProcessor类型的,上面都是implementation</span><br><span class="line"> url = [] //配置测试环境地址和生产环境地址</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>app下的build.gradle配置项目依赖</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">  compileSdkVersion rootProject.ext.android.compileSdkVersion // 引用全局的配置的版本</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">          resValue(&quot;string&quot;, &quot;HOST_URL&quot;, rootProject.ext.url.release_net_url)</span><br><span class="line">          //配置URL地址，只需配置一次，不用每次打不同环境的版本再次修改地址</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">      implementation fileTree(include: [&apos;*.jar&apos;], dir: &apos;libs&apos;) //引入所有libs下的ajr</span><br><span class="line">      rootProject.ext.supportlibs.implementation.each &#123; lib -&gt; implementation lib.value</span><br><span class="line">  		&#125;</span><br><span class="line">  		//引入所有配置的依赖</span><br><span class="line">  		api fileTree(include: [&apos;*.jar&apos;], dir: &apos;libs&apos;)</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>如果module：app想引用其他module里的jar文件如何操作呢？</p>
+<p>如果app module想引用其他module里的jar文件如何操作呢？</p>
 <p>compile 已被弃用，并由两个新的替代：  </p>
 <p>implementation：仅仅将你引用到的此 module 在内部使用，而不将其接口暴露给外部</p>
-<p>api：通过你自己的接口将你引用到的 module 接口暴露出去供其他 module 使用，含义上实际与 compile 一致</p>
-<p>module模块msclib下的libs/msc.jar文件，使用implementation关键字，app无法引用，替换成api关键字，可以引用</p>
+<p>api：通过你自己的接口将你引用到的 module 接口暴露出去供其他 module 使用</p>
+<p>例如：module模块msclib下的libs/msc.jar文件，使用implementation关键字，app无法引用，替换成api关键字，可以引用</p>
 <p>####网络模型(com.sinosig.almightytreasure.net)</p>
 <p>#####网络请求整体流程<br>HttpUtils.java类,该类用于串联被观察者(Observable)和观察者(Observer),把二者放在一个事件流里面。该类可以做网络加载前的一些处理，<br>比如获取本地存储的数据，做为结果返回。<br>被观察者由ApiService组成，ApiService.java接口类用于存储所有网络请求接口。<br>ApiConstants.java接口类，用于存放所有接口请求的地址，包括服务http地址（gradle之前配置过的地址）<br>Api.java类，用于初始化OkHttp网络请求<br>观察者由ProgressSubscriber组成，用于处理接口返回的数据<br>ApiException.java类，结果运行时异常处理类，比如当网络异常时，会回调到该类</p>
 <p>#####网络对话框的管理<br>ProgressSubscriber.java类(观察者)，当调用者Presenter发起网络请求的时候，<br>会初始化一个progresssubscriber观察者，并将该观察者订阅给被观察者(Observable)，当被观察者的动作完成后，正常会回调到onComplete()<br>异常会回调到onError()，然后在这两个方法里取消对话框</p>
@@ -433,6 +477,10 @@
 <ul>
 <li>onPageFinished()页面加载完成后处理标题数据</li>
 </ul>
+<h5 id="交互示例"><a href="#交互示例" class="headerlink" title="交互示例"></a>交互示例</h5><p>h5调用原生分享代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$(function()&#123;</span><br><span class="line">//当分享的url等内容为空，代表不能分享  </span><br><span class="line">var shareDate = &#123;&quot;title&quot;:&quot;&quot;,&quot;content&quot;:&quot;&quot;,&quot;url&quot;:&quot;&quot;,&quot;imagePath&quot;:&quot;&quot;&#125;;  </span><br><span class="line">var u = navigator.userAgent;  </span><br><span class="line">//android终端</span><br><span class="line">var isAndroid = u.indexOf(&apos;Android&apos;) &gt; -1 || u.indexOf(&apos;Adr&apos;) &gt; -1; </span><br><span class="line">//ios终端</span><br><span class="line">var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); </span><br><span class="line">//当shareDate里的参数都有数值，客户端认为可分享</span><br><span class="line">	if(isiOS)&#123;</span><br><span class="line">		appShare(JSON.stringify(shareDate));</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		Native.appShare(JSON.stringify(shareDate));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">function appShare(shareData)&#123;</span><br><span class="line">		window.location.href = &quot;shareWeChat://shareClick？content =&quot;+shareData;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原生调用h5代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//h5定义的function</span><br><span class="line">shareCallback = function(info) &#123;</span><br><span class="line">    //h5本身的逻辑处理</span><br><span class="line">&#125;;</span><br><span class="line">//原生传递info给h5</span><br><span class="line">mUIWebView.loadUrl(&quot;javascript:shareCallback(&apos;&quot; + info + &quot;&apos;)&quot;);</span><br></pre></td></tr></table></figure>
 <p>#####针对混合开发注意事项<br>cookie传递不支持跨域</p>
 <p>h5原生标题栏的处理  </p>
 <p>h5页面尽量调用原生的图片选择器</p>
@@ -968,6 +1016,105 @@ return sb.toString();
             
               
                 
+                <a class="post-title-link" href="/2017/05/05/基于Face++图片识别的广告机/" itemprop="url">
+                  智能广告机
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-05T15:37:59+08:00" content="2017-05-05">
+              2017-05-05
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/05/基于Face++图片识别的广告机/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/05/基于Face++图片识别的广告机/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###简介<br>本项目基于Face++<a href="https://www.faceplusplus.com.cn/" target="_blank" rel="external">官方网址</a>,根据官方提供的开发文档完成的人脸识别功能，api能够识别一张人像图片，并返回人物的年龄、性别、微笑指数等数据信息，系统根据三个指标匹配出对应的广告数据，点击广告数据可查看详情信息  </p>
+<p>###环境搭建<br>AndroidStudio2.3 + compileSdkVersion 25 + build:gradle:2.2.3  </p>
+<p>###主要类及功能<br>LoadingActivity：登录Face++,识别授权状态，用户需配置API_KEY，API_SECRET<br>MainActivity：上传图片，识别，拍照识别，管理员登录，管理广告分类，添加广告<br>FaceIdentifyActivity：图像识别类，根据识别的结果进行广告展示  </p>
+<p>###UE地址</p>
+<iframe src="https://modao.cc/app/IgQKD4TVsiW21rC1SDb03Qy3jiOS0ui/embed" width="488" height="900" allowtransparency="true" frameborder="0"></iframe>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/05/05/PLSQL+ORACLE安装/" itemprop="url">
                   PLSQL安装配置
                 </a>
@@ -1024,105 +1171,6 @@ OCI library：磁盘路径:\instantClient\oci.dll
 </code></pre><p>遇到的问题，需配置ODBC数据源管理程序<br>cmd运行命令，<code>odbcad32</code> 打开ODBC数据源管理程序<br>添加一个excellocal 32位 driver do Microsoft Excel(.xls)，配置完后即可import excel文件</p>
 <p>###利用PLSQL导入excel数据<br>导入cvs格式的数据到oracle，Data from Textfile<br>Tools-&gt;Text Importer-&gt;Open data file<br>选择对应的cvs文件，添加进来后，选择Data to Oracle <code>oracle数据库应该创建好对应的数据库表，且表结构和cvs表头属性字段一一对应</code>随后Import即可</p>
 
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/05/基于Face++图片识别的广告机/" itemprop="url">
-                  智能广告机
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-05-05T15:37:59+08:00" content="2017-05-05">
-              2017-05-05
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/05/05/基于Face++图片识别的广告机/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/05/基于Face++图片识别的广告机/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>###简介<br>本项目基于Face++<a href="https://www.faceplusplus.com.cn/" target="_blank" rel="external">官方网址</a>,根据官方提供的开发文档完成的人脸识别功能，api能够识别一张人像图片，并返回人物的年龄、性别、微笑指数等数据信息，系统根据三个指标匹配出对应的广告数据，点击广告数据可查看详情信息  </p>
-<p>###环境搭建<br>AndroidStudio2.3 + compileSdkVersion 25 + build:gradle:2.2.3  </p>
-<p>###主要类及功能<br>LoadingActivity：登录Face++,识别授权状态，用户需配置API_KEY，API_SECRET<br>MainActivity：上传图片，识别，拍照识别，管理员登录，管理广告分类，添加广告<br>FaceIdentifyActivity：图像识别类，根据识别的结果进行广告展示  </p>
-<p>###UE地址</p>
-<iframe src="https://modao.cc/app/IgQKD4TVsiW21rC1SDb03Qy3jiOS0ui/embed" width="488" height="900" allowtransparency="true" frameborder="0"></iframe>
           
         
       
