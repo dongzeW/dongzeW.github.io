@@ -236,6 +236,557 @@
             
               
                 
+                <a class="post-title-link" href="/2018/08/02/全能保客户端/" itemprop="url">
+                  全能保客户端
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-08-02T11:55:22+08:00" content="2018-08-02">
+              2018-08-02
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/08/02/全能保客户端/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/08/02/全能保客户端/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>####项目整体架构<br>寿险全能保项目，整体上是一个聚合平台，在应用里聚合了如，建议书、寿险出单、车险出单、客户管理、移动柜面等各个其他项目组的项目。<br>为了减少项目之间的耦合，全能保采用混合开发，原生主要搭建整体app运行框架，提供原生的webview浏览器，对接各个系统。</p>
+<p>app首页如果</p>
+<p><img src="uploads/home.jpg" alt="sourece"></p>
+<p>###开发环境</p>
+<p>####Android<br>AndroidStudio3.0.1 + jdk1.7(推荐使用1.8,支持lambda语法) + sdk17(根据目前手机的版本分布范围进行选择)</p>
+<p>####iOS<br>xcode(苹果企业账号，项目启动时提前向集团申请)</p>
+<p>####H5<br>webstorm</p>
+<p>h5用到的框架包括,vue、angular</p>
+<p>###Android项目结构<br>项目主要采用的是mvp的设计模式</p>
+<p><img src="uploads/mvp.png" alt="sourece"></p>
+<p>用的的三方支持库，包括：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">logger: &apos;com.orhanobut:logger:2.1.1&apos;,</span><br><span class="line">rxjava: &apos;io.reactivex.rxjava2:rxjava:2.1.5&apos;,</span><br><span class="line">rxandroid: &apos;io.reactivex.rxjava2:rxandroid:2.0.1&apos;,</span><br><span class="line">rxadapter: &apos;com.squareup.retrofit2:adapter-rxjava2:2.3.0&apos;,</span><br><span class="line">fastjson: &apos;com.alibaba:fastjson:1.1.65.android&apos;,</span><br><span class="line">retrofit: &apos;com.squareup.retrofit2:adapter-rxjava:2.3.0&apos;,</span><br><span class="line">logging_interceptor: &apos;com.squareup.okhttp3:logging-interceptor:3.5.0&apos;,</span><br><span class="line">hawk: &apos;com.orhanobut:hawk:2.0.1&apos;,</span><br><span class="line">eventbus: &apos;org.greenrobot:eventbus:3.0.0&apos;,</span><br><span class="line">glide: &apos;com.github.bumptech.glide:glide:4.3.1&apos;,</span><br><span class="line">//recycler适配器</span><br><span class="line">adapterdelegates3: &apos;com.hannesdorfmann:adapterdelegates3:3.0.1&apos;,</span><br><span class="line">//可拖动的gridview</span><br><span class="line">dynamicgridview: &apos;com.wwd:dynamicgrid:1.0.3&apos;,</span><br><span class="line">//recyclerview</span><br><span class="line">recycleradapter: &apos;com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.33&apos;,</span><br><span class="line">//上拉下拉</span><br><span class="line">refreshrecycler: &apos;com.github.anzaizai:EasyRefreshLayout:1.3.1&apos;,</span><br><span class="line">//图片选择器</span><br><span class="line">imagepicker: &apos;com.lzy.widget:imagepicker:0.6.1&apos;,</span><br><span class="line">// 垂直滚动的textview</span><br><span class="line">autov: &apos;com.github.paradoxie:AutoVerticalTextview:0.1&apos;,</span><br><span class="line">//微信分享</span><br><span class="line">wechat: &apos;com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+&apos;,</span><br><span class="line">//轮播图</span><br><span class="line">banner: &apos;com.bigkoo:convenientbanner:2.0.5&apos;,</span><br><span class="line">jpush: &apos;cn.jiguang.sdk:jpush:3.1.0&apos;,</span><br><span class="line">jcore: &apos;cn.jiguang.sdk:jcore:1.1.8&apos;,</span><br><span class="line">rxpermissions: &apos;com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar&apos;,</span><br><span class="line">tablayout: &apos;me.weyye.ColorTrackTabLayout:library:1.0.1&apos;,</span><br><span class="line">flowlayout: &apos;com.hyman:flowlayout-lib:1.1.2&apos;,</span><br><span class="line">umeng_common: &apos;com.umeng.sdk:common:latest.integration&apos;,</span><br><span class="line">umeng_analytics: &apos;com.umeng.sdk:analytics:latest.integration&apos;</span><br></pre></td></tr></table></figure>
+<p>整体的目录结果如图 </p>
+<p><img src="uploads/app_arm.jpg" alt="sourece"></p>
+<p>####gradle的配置及使用<br>主要的官方网址<br><a href="http://search.maven.org/" target="_blank" rel="external">mavenCenter</a>:版本查询库，能够查看当前所需依赖库的最新版本及之前发布过的所有历史版本</p>
+<p><img src="uploads/maven.jpg" alt="sourece"></p>
+<p>GroupID：项目组织唯一的标识符，对应JAVA的包名<br>ArtifactID：项目的唯一的标识符，实际对应项目的名称<br>Latest Version：最新版本，点击all可以查看历史版本<br>如果maven库里查询不到的库，可以去<br><a href="https://bintray.com/" target="_blank" rel="external">jcenter</a>,还有就是google和其他手动引入的服务器地址  </p>
+<p><a href="https://gradle.org/" target="_blank" rel="external">gradle工具</a><br>AS初始化gradle环境的时候，因从as里下载速度比较慢，需要我们手动下载gradle版本，然后启动as<br><a href="https://gradle.org/releases/" target="_blank" rel="external">gradle版本</a>下载所需的版本，手动放在系统用户目录.gradle/wrapper/dists/gradle-4.8-all/41c9mvq2w0645xx6nsenaerjl/下。<br>gradle/wrapper/gradle-wrapper.properties,用于配置gradle版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">在线版本</span><br><span class="line">distributionUrl = https\://services.gradle.org/distributions/gradle-4.8-all.zip     </span><br><span class="line">离线版本 </span><br><span class="line">distributionUrl = file:///本地存放的位置/gradle-4.8-all.zip</span><br></pre></td></tr></table></figure>
+<p>gradle plugin 和 gradle各个版本的对应关系,请严格按照此对应关系，引入版本，因为存在版本兼容性问题  </p>
+<p><img src="uploads/gradle.png" alt="sourece"></p>
+<p>project下的build.gradle配置全局引用，指定远端仓库地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jcenter()</span><br><span class="line">mavenCentral()</span><br><span class="line">google()</span><br><span class="line">maven &#123; url &apos;https://jitpack.io&apos; &#125;</span><br></pre></td></tr></table></figure>
+<p>sinosig.gradle自定义的gradle文件，用于配置项目依赖包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ext &#123;</span><br><span class="line"> android =[] //包含sdk的版本信息，app的版本配置</span><br><span class="line"> ilibs = [] //项目依赖的包</span><br><span class="line"> supportlibs = [] //com.android.support包，供各个modules使用</span><br><span class="line"> alibs =[] // annotationProcessor类型的,上面都是implementation</span><br><span class="line"> url = [] //配置测试环境地址和生产环境地址</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>app下的build.gradle配置项目依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">  compileSdkVersion rootProject.ext.android.compileSdkVersion // 引用全局的配置的版本</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">          resValue(&quot;string&quot;, &quot;HOST_URL&quot;, rootProject.ext.url.release_net_url)</span><br><span class="line">          //配置URL地址，只需配置一次，不用每次打不同环境的版本再次修改地址</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">      implementation fileTree(include: [&apos;*.jar&apos;], dir: &apos;libs&apos;) //引入所有libs下的ajr</span><br><span class="line">      rootProject.ext.supportlibs.implementation.each &#123; lib -&gt; implementation lib.value</span><br><span class="line">  		&#125;</span><br><span class="line">  		//引入所有配置的依赖</span><br><span class="line">  		api fileTree(include: [&apos;*.jar&apos;], dir: &apos;libs&apos;)</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>如果module：app想引用其他module里的jar文件如何操作呢？</p>
+<p>compile 已被弃用，并由两个新的替代：  </p>
+<p>implementation：仅仅将你引用到的此 module 在内部使用，而不将其接口暴露给外部</p>
+<p>api：通过你自己的接口将你引用到的 module 接口暴露出去供其他 module 使用，含义上实际与 compile 一致</p>
+<p>module模块msclib下的libs/msc.jar文件，使用implementation关键字，app无法引用，替换成api关键字，可以引用</p>
+<p>####网络模型(com.sinosig.almightytreasure.net)</p>
+<p>#####网络请求整体流程<br>HttpUtils.java类,该类用于串联被观察者(Observable)和观察者(Observer),把二者放在一个事件流里面。该类可以做网络加载前的一些处理，<br>比如获取本地存储的数据，做为结果返回。<br>被观察者由ApiService组成，ApiService.java接口类用于存储所有网络请求接口。<br>ApiConstants.java接口类，用于存放所有接口请求的地址，包括服务http地址（gradle之前配置过的地址）<br>Api.java类，用于初始化OkHttp网络请求<br>观察者由ProgressSubscriber组成，用于处理接口返回的数据<br>ApiException.java类，结果运行时异常处理类，比如当网络异常时，会回调到该类</p>
+<p>#####网络对话框的管理<br>ProgressSubscriber.java类(观察者)，当调用者Presenter发起网络请求的时候，<br>会初始化一个progresssubscriber观察者，并将该观察者订阅给被观察者(Observable)，当被观察者的动作完成后，正常会回调到onComplete()<br>异常会回调到onError()，然后在这两个方法里取消对话框</p>
+<p>#####异常的统一处理<br>ProgressSubscriber.java类，再该类的onError()方法处理，包含ApiException异常,和接口请求异常，该类返回是在RxHelper.java类的<br>handleResult方法里</p>
+<p>#####统一数据格式<br>BaseResult.java类，定义接口返回的基类,所有接口返回的数据通用模板。数据格式如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;message&quot;: &quot;登录成功&quot;,</span><br><span class="line">  &quot;code&quot;: &quot;200&quot;,</span><br><span class="line">  &quot;data&quot;: T</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>data为接口的真实数据类型,当请求接口的时候在ApiService.java类定义，其中LoginBean对应登录接口返回是data数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@FormUrlEncoded @POST(ApiConstants.LOGIN) Observable&lt;BaseResult&lt;LoginBean&gt;&gt; login();</span><br></pre></td></tr></table></figure>
+<p>#####自定义Retrofit中的ConverterFactory<br>当针对不同的数据类型，比如接口返回的数据格式为json或xml时候，我们需要自定义factory，来引入自己的解析方式。<br>举例，引入阿里巴巴的com.alibaba:fastjson。<br>自定义实现coverter的实现类，处理responseBody里返回的数据流</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">final class SSResponseBody&lt;T&gt; implements Converter&lt;ResponseBody, T&gt; &#123;</span><br><span class="line">  private final Type type;</span><br><span class="line"></span><br><span class="line"> SSResponseBody(Type type) &#123;</span><br><span class="line">    this.type = type;</span><br><span class="line">  &#125;</span><br><span class="line">  /**</span><br><span class="line">   * 切换成fastjson解析</span><br><span class="line">   *</span><br><span class="line">   * @throws IOException</span><br><span class="line">   */</span><br><span class="line">  @Override public T convert(ResponseBody value) throws IOException &#123;</span><br><span class="line">    BufferedSource bufferedSource = Okio.buffer(value.source());</span><br><span class="line">    String response = bufferedSource.readUtf8();</span><br><span class="line">    return JSON.parseObject(response, type);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将定义好的converter转换器添加到Retrofit中</p>
+<p>#####自定义拦截器(Interceptor)<br>UnsafeOkHttpClient.java类，实现了自定义拦截器，控制网络请求的Log输出，debug级别输出日志，release关闭日志输出</p>
+<p>RequestInterceptor.java类，当请求网络接口时候，需要统一设置请求头(header)或请求体(body)时，可以自定义拦截器，进行预处理</p>
+<p>####App H5交互(com.sinosig.sunshinelife.utilityplatform.web)</p>
+<h5 id="WebView的初始化"><a href="#WebView的初始化" class="headerlink" title="WebView的初始化"></a>WebView的初始化</h5><p>定义用户自己的WebView(UIWebView)，用于配置统一处理WebSettings、cookie、封装javascript</p>
+<p>添加Javascript接口，调用方法addJavascriptInterface(new NativeWebViewProxy(), “Native”);将NativeWebViewProxy代理类实现的所有方法注入webview，用于h5调用，调用方式如：Native.shareTimeline()，Native为添加方法的时候起的别名,对应addJavascriptInterface方法的第二个参数，shareTimeline()为NativeWebViewProxy()类的实现方法</p>
+<p>调用h5url之前设置cookie用于传送(登录信息)数据给h5，</p>
+<p>webview设置setWebChromeClient和setWebViewClient方法</p>
+<p>WebChromeClient类的主要功能</p>
+<ol>
+<li>用于扩展支持h5的input标签，进行图片的选择和相机的打开，如果h5使用该方式获取图片资源，h5拿到数据后需自己进行图片的压缩处理，否则会因为图片过大，导致不避免的错误发生</li>
+</ol>
+<ul>
+<li>添加webview加载页面时的loading页面</li>
+</ul>
+<p>WebViewClient类的主要功能</p>
+<ol>
+<li>shouldOverrideUrlLoading()方法对sms、tel、mailto等协议的处理</li>
+</ol>
+<ul>
+<li>onPageFinished()页面加载完成后处理标题数据</li>
+</ul>
+<p>#####针对混合开发注意事项<br>cookie传递不支持跨域</p>
+<p>h5原生标题栏的处理  </p>
+<p>h5页面尽量调用原生的图片选择器</p>
+<p>权限申请(rxpermissions),该类库可以一次申请多个权限.</p>
+<p>h5调用原生方法，进行UI更改的时候</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">runOnUiThread(new Runnable() &#123;</span><br><span class="line">      @Override public void run() &#123;</span><br><span class="line">      //进行更改</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>####MVP的具体应用</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/29/Kotlin/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-29T16:39:35+08:00" content="2017-06-29">
+              2017-06-29
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/06/29/Kotlin/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/29/Kotlin/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###Kotlin简介<br>Kotlin是一种基于JVM的新的编程语言,它也可以被编译成为JavaScript原始码，它主要是由俄罗斯圣彼得堡的JetBrains开发团队所发展出来的程式语言，其名称来自于圣彼得堡附近的科特林岛。</p>
+<p>###Kotlin历史<br>2011年7月，JetBrains推出Kotlin项目，这是一个面向JVM的新语言，它已被开发一年之久。JetBrains负责人Dmitry Jemerov说，大多数语言没有他们正在寻找的特性，Scala除外。但是，他指出Scala的编译时间慢这一明显缺陷。Kotlin的既定目标之一是像Java一样快速编译。  </p>
+<p>2012年2月，JetBrains以Apache2许可证开源此项目。  </p>
+<p>2016年2月15日Kotlin v1.0发布。这被认为是第一个官方稳定版本，并且JetBrains已经准备从该版本开始的长期向后兼容。  </p>
+<p>2017年5月19日，在Google I/O 大会上，Google宣布在Android上为Kotlin提供一等支持。</p>
+<p>###Steve Yegge总结的Kotlin的高级特性（high-level）<br>以下是Steve Yegge总结的Kotlin的高级（high-level）特性：</p>
+<ul>
+<li><p>Kotlin 很像 Java。它长得不像 Clojure 或者 Scala 那么奇怪（承认现实把，这两种语言就是挺奇怪的）。所以你学 Kotlin 应该很快。这门语言显然就是写给 Java 开发者来用的。</p>
+</li>
+<li><p>它比 Java 更安全。Java 很多需要 annotation processors 来做的事情在 Kotlin 里则是内置的，例如 overriding，nullability等等。而且 Kotlin 对数值转换的规则也更安全，虽然我不太喜欢 Kotlin 的处理方式，但是我还是很感谢这门语言强制我去思考我的数值表现形式。</p>
+</li>
+<li><p>Kotlin 和 Java 是可以互译的。真的是指无缝互译。我见过很多 JVM 语言最后挂掉，就是因为其不支持子类继承机制。我不知道什么时候就会用到静态内部类，非静态内部类，或者什么破玩意儿类。Kotlin 在设计时就把和Java互译的属性放在第一位，也就是说，把 Java 翻译到 Kotlin 可以逐渐进行，一次可以直接转换一个文件。</p>
+</li>
+<li><p>Kotlin 很简洁。你要知道我也算是个高尔夫球手，所以我实话实说。如果在一切都相同的情况下，我更喜欢短的程序，只要它写的逻辑清楚。Kotlin 对我来说就像是打了一轮好局。平均下来我发现 Kotlin 的代码长度比相同逻辑的 Jython 代码短了 5%-10%（这可是我用某种“黄金标准”测出来的），而且还能保证程序的可读性和类型安全。</p>
+</li>
+<li><p>Kotlin 更贴近实际。Kotlin 支持在一个文件里定义多个类，支持一等方法，操作符重载，扩展方法，类型别名，字符串模板，还有一堆看上去没什么新意的语言特性它都支持。而我就是不明白为什么 Java 什么都不支持，连人们需要的语言特性它都不做。</p>
+</li>
+<li><p>Kotlin 进化很快。例如刚刚宣布启动的对 coroutine 的支持，将会成为提供 asyn/await， geneator 以及所有其他无锁并发特性的基础设施。</p>
+</li>
+<li><p>Kotlin 很擅长“拿来主义”。Kotlin 经常从其他的计算机语言设计中抄点子，并且也毫不避讳。他们说：“我们很喜欢 C# 的处理方式，所以我们就自己照着撸了一个。”</p>
+</li>
+<li><p>Kotlin 支持 DSL。DSL 不到深思熟虑万不得已的话千万不要引入，但是不得不承认 DSL 威力巨大。例如你看 Gradle 的 DSL 和 Maven 比，在典型的 Maven 项目里，配置代码肯定要超过上千行。所以 Kotlin 是来给你降工作压力的。</p>
+</li>
+<li><p>Kotlin 的 IDE 是在是太棒了。刚才不久我才在 Emacs 里写程序文件，结果 Emacs 报了一对错。而我把同样的代码拷贝到 IntelliJ 里面，然后按 Alt-Enter 逐一自动修复了 50 多条，然后所有的错误就都搞定了。这真是帮了大忙啊。</p>
+</li>
+<li><p>Kotlin 很有趣。我跟你们说，Kotlin 就是有趣。也许这是我发自潜意识地在做广告。Kolint 的关键字和方法名都很有意思。Kotlin 把我从一个只会死编程的码农转变为了一个计算机语言的爱好者。</p>
+</li>
+</ul>
+<p>###Kotlin的特性展示</p>
+<ul>
+<li>Kotlin的默认值不再需要builder<br>当Java构造函数有很多可选参数时，代码将变得冗余，可读性差且容易出错。针对这个问题，Effective Java的条目2讲述了如何有效地使用构造器模式（Builder Pattern）。构造这样的对象需要些很多代码，如下面的代码示例中的“营养学”对象。它有两个必须的参数（serveSize，servings）和四个可选参数（calaries，fat，sodium，carbohydrates）：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">public class JavaNutritionFacts &#123;</span><br><span class="line">    private final int servingSize;</span><br><span class="line">    private final int servings;</span><br><span class="line">    private final int calories;</span><br><span class="line">    private final int fat;</span><br><span class="line">    private final int sodium;</span><br><span class="line">    private final int carbohydrate;</span><br><span class="line">    public static class Builder &#123;</span><br><span class="line">        // Required parameters</span><br><span class="line">        private final int servingSize;</span><br><span class="line">        private final int servings;</span><br><span class="line">        // Optional parameters - initialized to default values</span><br><span class="line">        private int calories      = 0;</span><br><span class="line">        private int fat           = 0;</span><br><span class="line">        private int carbohydrate  = 0;</span><br><span class="line">        private int sodium        = 0;</span><br><span class="line">        public Builder(int servingSize, int servings) &#123;</span><br><span class="line">            this.servingSize = servingSize;</span><br><span class="line">            this.servings    = servings;</span><br><span class="line">        &#125;</span><br><span class="line">        public Builder sodium(int val) &#123; </span><br><span class="line">	        sodium = val;        </span><br><span class="line">	        return this; </span><br><span class="line">        &#125;</span><br><span class="line">        public JavaNutritionFacts build() &#123;</span><br><span class="line">            return new JavaNutritionFacts(this);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    private JavaNutritionFacts(Builder builder) &#123;</span><br><span class="line">        servingSize  = builder.servingSize;</span><br><span class="line">        servings     = builder.servings;</span><br><span class="line">        calories     = builder.calories;</span><br><span class="line">        fat          = builder.fat;</span><br><span class="line">        sodium       = builder.sodium;</span><br><span class="line">        carbohydrate = builder.carbohydrate;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>要用Java实例化一个对象，就得这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">final JavaNutritionFacts cocaCola = new JavaNutritionFacts.Builder(240,8)</span><br><span class="line">    .calories(100)</span><br><span class="line">    .sodium(35)</span><br><span class="line">    .carbohydrate(27)</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
+<p>而在Kotlin中，你不在需要使用构造器模式，因为它有默认参数的功能，允许你在每个可选的构造函数参数定义默认值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class KotlinNutritionFacts(</span><br><span class="line">        private val servingSize: Int,</span><br><span class="line">        private val servings: Int,</span><br><span class="line">        private val calories: Int = 0,</span><br><span class="line">        private val fat: Int = 0,</span><br><span class="line">        private val sodium: Int = 0,</span><br><span class="line">        private val carbohydrates: Int = 0)</span><br></pre></td></tr></table></figure>
+<p>所以在Kotlin中创建对象就可以这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">val cocaCola = KotlinNutritionFacts(240,8,</span><br><span class="line">                calories = 100,</span><br><span class="line">                sodium = 35,</span><br><span class="line">                carbohydrates = 27)</span><br></pre></td></tr></table></figure>
+<p>我们将Java的47行代码减少到了Kotlin的7行，大大提高了生产力。<br>因为Java和Kotlin可以无缝连接，可以用Java创建这样的KotlinNutrition对象，但是你得为每个可选参数设定一个值。还好，只要加上JvmOverloads注解，那么就会自动生成多个构造器，使用注解时需要constructor关键字：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class KotlinNutritionFacts @JvmOverloads constructor(</span><br><span class="line">        private val servingSize: Int,</span><br><span class="line">        private val servings: Int,</span><br><span class="line">        private val calories: Int = 0,</span><br><span class="line">        private val fat: Int = 0,</span><br><span class="line">        private val sodium: Int = 0,</span><br><span class="line">        private val carbohydrates: Int = 0)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建单利（singleton）很容易</li>
+</ul>
+<p>Effective Java的条目3说了如何设计一个单利Java对象，也就是只能实例化一个实例的对象。下面的代码片段展示了一个“单向”的宇宙，其中只能存在一个猫王：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class JavaElvis &#123;</span><br><span class="line">    private static JavaElvis instance;</span><br><span class="line">    private JavaElvis() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    public static JavaElvis getInstance() &#123;</span><br><span class="line">        if (instance == null) &#123;</span><br><span class="line">            instance = new JavaElvis();</span><br><span class="line">        &#125;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">    public void leaveTheBuilding() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Kotlin有“对象声明”的概念，可以方便的通过对象声明来获得一个单利。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">object KotlinElvis &#123;</span><br><span class="line">    fun leaveTheBuilding() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再也不用费劲构造单利了。</p>
+<ul>
+<li>属性（properties）取代域（fields）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class JavaPerson &#123;</span><br><span class="line">    // don&apos;t use public fields in public classes!</span><br><span class="line">    public String name;</span><br><span class="line">    public Integer age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>条目14建议在公有类中使用访问器方法而不是公有字段。如果您不这么做的话可能会遇到麻烦，因为域可以直接访问，导致完全享受不到封装好处。这意味着日后你将无法在不改动其公共API的情况下更改该类的内部表达。比如，后面你就不能再去限制某个字段的值，例如人的年龄。这就是为什么我们总是在Java中创建这些冗长的默认getter和setter的原因之一。</p>
+<p>而Kotlin直接用自动生成默认getter和setter的属性取代了字段/域。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class KotlinPerson &#123;</span><br><span class="line">    var name: String? = null</span><br><span class="line">    var age: Int? = null</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从语法上来说，你可以使用person.name 或者 person.age访问Java中的公共字段等属性。之后也可以添加自定义的getter和setter而无需更改类的API：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class KotlinPerson &#123;</span><br><span class="line">    var name: String? = null</span><br><span class="line">    var age: Int? = null</span><br><span class="line">    set(value) &#123;</span><br><span class="line">        if (value in 0..120)&#123;</span><br><span class="line">            field = value</span><br><span class="line">        &#125; else&#123;</span><br><span class="line">            throw IllegalArgumentException()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有了Kotlin的属性，我们的类将更简洁，同时还具有与生俱来的灵活性。</p>
+<ul>
+<li>强制的 null 检查  </li>
+</ul>
+<p>在Java中，public方法的方法签名不会告诉你返回值是否为空。例如：   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;Item&gt; getSelectedItems()</span><br></pre></td></tr></table></figure>
+<p>空指针（NullPointerException或NPE）是我们使用Java开发程序中最常见的崩溃了。在开发法中经常会犯的两个错误是：</p>
+<blockquote>
+<p>1.忘记检查返回值是否为空，导致著名的NullPointerException；<br>2.在返回值永远不可能为空的情况下检查了其是否为空，造成代码冗余。</p>
+</blockquote>
+<p>为了避免NPE错误的发生，在Java中我们不得不写很多防御性的代码，比如这样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public void test(String string) &#123;</span><br><span class="line">    if (string != null) &#123;</span><br><span class="line">        char[] chars = string.toCharArray();</span><br><span class="line">        if (chars.length &gt; 10) &#123;</span><br><span class="line">            System.out.println(((Character)chars[10]).hashCode());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在Kotlin中空指针异常得到了很好的解决。</p>
+<blockquote>
+<p>1.在类型上的处理，即在类型后面加上?，即表示这个变量或参数以及返回值可以为null，<br>否则不允许为变量参数赋值为null或者返回null<br>2.对于一个可能是null的变量或者参数，在调用对象方法或者属性之前，需要加上?，<br>否则编译无法通过。</p>
+</blockquote>
+<p>如下面的代码就是Kotlin实现空指针安全的一个例子，而且相对Java实现而言，简直是一行代码搞定的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fun testNullSafeOperator(string: String?) &#123;</span><br><span class="line">    System.out.println(string?.toCharArray()?.getOrNull(10)?.hashCode())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">testNullSafeOperator(null)</span><br><span class="line">testNullSafeOperator(&quot;12345678901&quot;)</span><br><span class="line">testNullSafeOperator(&quot;123&quot;)</span><br><span class="line"></span><br><span class="line">//result</span><br><span class="line">null</span><br><span class="line">49</span><br><span class="line">null</span><br></pre></td></tr></table></figure>
+<p>有了Kotlin的空安全性（null safety），你将知道返回值是否为空。</p>
+<ul>
+<li>支持方法扩展</li>
+</ul>
+<p>很多时候，Framework提供给我们的API往往都时比较原子的，调用时需要我们进行组合处理，因为就会产生了一些Util类，一个简单的例子，我们想要更快捷的展示Toast信息，在Java中我们可以这样做。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public static void longToast(Context context, String message) &#123;</span><br><span class="line">    Toast.makeText(context, message, Toast.LENGTH_LONG).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是Kotlin的实现却让人惊奇，我们只需要重写扩展方法就可以了，比如这个longToast方法扩展到所有的Context对象中，如果不去追根溯源，可能无法区分是Framework提供的还是自行扩展的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fun Context.longToast(message: String) &#123;</span><br><span class="line">    Toast.makeText(this, message, Toast.LENGTH_LONG).show()</span><br><span class="line">&#125;</span><br><span class="line">applicationContext.longToast(&quot;hello world&quot;)</span><br></pre></td></tr></table></figure>
+<p>注意：Kotlin的方法扩展并不是真正修改了对应的类文件，而是在编译器和IDE方面做得处理。使我们看起来像是扩展了方法。</p>
+<p>###Kotlin在Android的广泛应用<br>Kotlin对Android应用开发支持广泛，诸多工具，比如kotterknife(ButterKnife Kotlin版)，RxKotlin,Anko等等，当然还有已经存在的很多Java的库都是可以使用的。</p>
+<p>###参考资料<br><a href="https://zh.wikipedia.org/wiki/Kotlin?wprov=sfla1" target="_blank" rel="external">维基百科</a><br><a href="http://steve-yegge.blogspot.com/2017/05/why-kotlin-is-better-than-whatever-dumb.html?m=1" target="_blank" rel="external">Steve Yegge的文章，英文原版</a><br><a href="http://www.oschina.net/news/85326/why-kotlin-better-than-others?from=mail-notify" target="_blank" rel="external">Steve Yegge的文章，翻译版</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/12/Android上form-data提交图片带文本参数/" itemprop="url">
+                  Android上form-data提交图片带文本参数
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-12T15:41:36+08:00" content="2017-05-12">
+              2017-05-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/12/Android上form-data提交图片带文本参数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/12/Android上form-data提交图片带文本参数/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>什么是form-data<br>form-data是基于post请求，post的基本请求格式是name = value格式的，而multipart/form-data则是添加了分隔符等内容的构造体，主要标识是分隔符，分隔符可自定义，用于分隔参数，该分隔符取名<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">例如  </span><br><span class="line">1，定义分隔符</span><br></pre></td></tr></table></figure></p>
+<p>String boundary = “<strong>*</strong>“+Long.toString(System.currentTimeMillis())+”<strong>*</strong>“;<br>connection.setRequestProperty(“Content-Type”,”multipart/form-data; boundary=”+boundary);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2,利用DataOutputStream写给接受者（后台服务器）</span><br></pre></td></tr></table></figure></p>
+<p>注入分隔符标识位<br>outputStream.writeBytes(twoHyphens + boundary + lineEnd);<br>设置key和文件名称<br>outputStream.writeBytes(“Content-Disposition: form-data; name=\””+filefield+”\”;filename=\””+q[idx]+”\””+lineEnd)<br>定义文件类型<br>outputStream.writeBytes(“Content-Type: “ + fileMimeType + lineEnd);<br>定义文件以二级制流的方式传输<br>outputStream.writeBytes(“Content-Transfer-Encoding: binary”+lineEnd);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">具体代码如下：</span><br></pre></td></tr></table></figure></p>
+<p>public void takeLicenseFromNetwork(String apiKey, String apiSecret, String imageFile,<br>      NetCallback callback) throws Exception {<br>    String pathUrl = “<a href="https://api-cn.faceplusplus.com/facepp/v3/detect" target="_blank" rel="external">https://api-cn.faceplusplus.com/facepp/v3/detect</a>“;<br>    Map<string, string=""> params = new HashMap<string, string="">(2);<br>    params.put(“api_key”, apiKey);<br>    params.put(“api_secret”, apiSecret);<br>    params.put(“return_landmark”, “1”);<br>    params.put(“return_attributes”, “gender,age,smiling”);<br>    params.put(“image_file”, “@image_file.jpg”);<br>    String result = multipartRequest(pathUrl, params, imageFile, “image_file”, “@image_file.jpg”);<br>    callback.callback(result);<br>  }<br>public String multipartRequest(String urlTo, Map<string, string=""> parmas, String filepath,<br>      String filefield, String fileMimeType) throws Exception {<br>    HttpURLConnection connection = null;<br>    DataOutputStream outputStream = null;<br>    InputStream inputStream = null;</string,></string,></string,></p>
+<pre><code>String twoHyphens = &quot;--&quot;;
+String boundary = &quot;*****&quot; + Long.toString(System.currentTimeMillis()) + &quot;*****&quot;;
+String lineEnd = &quot;\r\n&quot;;
+
+String result = &quot;&quot;;
+
+int bytesRead, bytesAvailable, bufferSize;
+byte[] buffer;
+int maxBufferSize = 1 * 1024 * 1024;
+
+String[] q = filepath.split(&quot;/&quot;);
+int idx = q.length - 1;
+
+try {
+  File file = new File(filepath);
+  FileInputStream fileInputStream = new FileInputStream(file);
+
+  URL url = new URL(urlTo);
+  connection = (HttpURLConnection) url.openConnection();
+
+  connection.setDoInput(true);
+  connection.setDoOutput(true);
+  connection.setUseCaches(false);
+
+  connection.setRequestMethod(&quot;POST&quot;);
+  connection.setRequestProperty(&quot;Connection&quot;, &quot;Keep-Alive&quot;);
+  connection.setRequestProperty(&quot;User-Agent&quot;, &quot;Android Multipart HTTP Client 1.0&quot;);
+  connection.setRequestProperty(&quot;Content-Type&quot;, &quot;multipart/form-data; boundary=&quot; + boundary);
+
+  outputStream = new DataOutputStream(connection.getOutputStream());
+  outputStream.writeBytes(twoHyphens + boundary + lineEnd);
+  outputStream.writeBytes(
+      &quot;Content-Disposition: form-data; name=\&quot;&quot; + filefield + &quot;\&quot;; filename=\&quot;&quot; + q[idx] + &quot;\&quot;&quot;
+          + lineEnd);
+  outputStream.writeBytes(&quot;Content-Type: &quot; + fileMimeType + lineEnd);
+  outputStream.writeBytes(&quot;Content-Transfer-Encoding: binary&quot; + lineEnd);
+
+  outputStream.writeBytes(lineEnd);
+
+  bytesAvailable = fileInputStream.available();
+  bufferSize = Math.min(bytesAvailable, maxBufferSize);
+  buffer = new byte[bufferSize];
+
+  bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+  while (bytesRead &gt; 0) {
+    outputStream.write(buffer, 0, bufferSize);
+    bytesAvailable = fileInputStream.available();
+    bufferSize = Math.min(bytesAvailable, maxBufferSize);
+    bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+  }
+  outputStream.writeBytes(lineEnd);
+  // Upload POST Data
+  Iterator&lt;String&gt; keys = parmas.keySet().iterator();
+  while (keys.hasNext()) {
+    String key = keys.next();
+    String value = parmas.get(key);
+
+    outputStream.writeBytes(twoHyphens + boundary + lineEnd);
+    outputStream.writeBytes(&quot;Content-Disposition: form-data; name=\&quot;&quot; + key + &quot;\&quot;&quot; + lineEnd);
+    outputStream.writeBytes(&quot;Content-Type: text/plain&quot; + lineEnd);
+    outputStream.writeBytes(lineEnd);
+    outputStream.writeBytes(value);
+    outputStream.writeBytes(lineEnd);
+  }
+
+  outputStream.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
+
+  if (200 != connection.getResponseCode()) {
+    throw new Exception(&quot;Failed to upload code:&quot; + connection.getResponseCode() + &quot; &quot;
+        + connection.getResponseMessage());
+  }
+
+  inputStream = connection.getInputStream();
+
+  result = this.convertStreamToString(inputStream);
+
+  fileInputStream.close();
+  inputStream.close();
+  outputStream.flush();
+  outputStream.close();
+
+  return result;
+} catch (Exception e) {
+  throw new Exception(e);
+}
+</code></pre><p>  }</p>
+<p>  private String convertStreamToString(InputStream is) {<br>    BufferedReader reader = new BufferedReader(new InputStreamReader(is));<br>    StringBuilder sb = new StringBuilder();</p>
+<pre><code>String line = null;
+try {
+  while ((line = reader.readLine()) != null) {
+    sb.append(line);
+  }
+} catch (IOException e) {
+  e.printStackTrace();
+} finally {
+  try {
+    is.close();
+  } catch (IOException e) {
+    e.printStackTrace();
+  }
+}
+return sb.toString();
+</code></pre><p>  }</p>
+<p>```</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/05/11/Android和web学生点名签到考勤系统/" itemprop="url">
                   Android和web学生点名签到考勤系统
                 </a>
@@ -974,7 +1525,7 @@ OCI library：磁盘路径:\instantClient\oci.dll
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1023,7 +1574,7 @@ OCI library：磁盘路径:\instantClient\oci.dll
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
