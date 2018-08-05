@@ -288,8 +288,12 @@
           
             <p>##<a name="index">目录</a></p>
 <ul>
-<li><a href="#md">移动端设计</a>  <ul>
-<li><a href="#ui">UI</a></li>
+<li><a href="#md">移动端开发</a>  <ul>
+<li><a href="#ui">UI</a><ul>
+<li><a href="#uidesign">如何高精度的还原美工的设计图</a></li>
+<li><a href="#uiadapter">如何搭建通用的UI页面，能够尽量多的适配不同分辨率</a></li>
+</ul>
+</li>
 <li><a href="#bl">业务逻辑</a></li>
 <li><a href="#data">数据</a></li>
 </ul>
@@ -297,10 +301,247 @@
 <li><a href="#qnb">全能保</a><ul>
 <li><a href="#qnbd">项目整体说明</a></li>
 <li><a href="#din">开发环境</a></li>
-<li><a href="#android">安卓</a></li>
+<li><a href="#android">安卓</a><ul>
+<li><a href="#versioncenter">版本库的配置及使用</a></li>
+<li><a href="#net">网络模型</a></li>
+<li><a href="#apph">App H5交互</a></li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+<p>####<a name="md">移动端开发<br>移动客户端整体做拆分，能够划分成几大模块？</a></p>
+<table>
+<thead>
+<tr>
+<th>移动端app分层</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UI用户交互</td>
+<td>直观呈现给用户的</td>
+<td></td>
+</tr>
+<tr>
+<td>业务逻辑处理</td>
+<td>支撑交互操作，用于串联数据和UI</td>
+<td></td>
+</tr>
+<tr>
+<td>数据</td>
+<td>数据是事实或观察的结果，是对客观事物的逻辑归纳，是用于表示客观事物的未经加工的的原始素材</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>####<a name="ui">UI</a></p>
+<p>####<a name="uidesign">如何高精度的还原美工的设计图<br>安卓手机</a></p>
+<table>
+<thead>
+<tr>
+<th>屏幕尺寸</th>
+<th>密度</th>
+<th>密度比(160)</th>
+<th>分辨率</th>
+<th>launcher icon大小</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> small</td>
+<td>120</td>
+<td>0.75</td>
+<td>426x320</td>
+<td>36x36</td>
+</tr>
+<tr>
+<td> normal</td>
+<td>160</td>
+<td>1.0</td>
+<td>470x320</td>
+<td>48x48</td>
+</tr>
+<tr>
+<td> large</td>
+<td>240</td>
+<td>1.5</td>
+<td>640x360</td>
+<td>64x64</td>
+</tr>
+<tr>
+<td> xlarge</td>
+<td>320</td>
+<td>2.0</td>
+<td>960x720</td>
+<td>96x96</td>
+</tr>
+<tr>
+<td> xxlarge</td>
+<td>480</td>
+<td>3.0</td>
+<td>1280x960</td>
+<td>144x144</td>
+</tr>
+<tr>
+<td> xxxlarge</td>
+<td>640</td>
+<td>4.0</td>
+<td>1920x1440</td>
+<td>192x192</td>
+</tr>
+</tbody>
+</table>
+<p>苹果手机</p>
+<table>
+<thead>
+<tr>
+<th>设备</th>
+<th>屏幕尺寸</th>
+<th>分辨率（point）</th>
+<th>Reader</th>
+<th>分辨率（pixel）</th>
+<th>渲染后</th>
+<th>PPI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> iPhone 3GS</td>
+<td>3.5</td>
+<td>320x480</td>
+<td>@1x</td>
+<td>320x480</td>
+<td></td>
+<td>163</td>
+</tr>
+<tr>
+<td> iPhone 4/4s</td>
+<td>3.5</td>
+<td>320x480</td>
+<td>@2x</td>
+<td>640x960</td>
+<td></td>
+<td>330</td>
+</tr>
+<tr>
+<td> iPhone 5/5s/5c</td>
+<td>4.0</td>
+<td>320x568</td>
+<td>@2x</td>
+<td>640x1136</td>
+<td></td>
+<td>326</td>
+</tr>
+<tr>
+<td> iPhone 6</td>
+<td>4.7</td>
+<td>375x667</td>
+<td>@2x</td>
+<td>750x1334</td>
+<td></td>
+<td>326</td>
+</tr>
+<tr>
+<td> iPhone 6Plus</td>
+<td>5.5</td>
+<td>414x736</td>
+<td>@3x</td>
+<td>1242x2208</td>
+<td>1080x1920</td>
+<td>401</td>
+</tr>
+<tr>
+<td> iPhone 6s</td>
+<td>4.7</td>
+<td>375x667</td>
+<td>@2x</td>
+<td>750x1334</td>
+<td></td>
+<td>326</td>
+</tr>
+<tr>
+<td> iPhone 6sPlus</td>
+<td>5.5</td>
+<td>414x736</td>
+<td>@3x</td>
+<td>1242x2208</td>
+<td>1080x1920</td>
+<td>401</td>
+</tr>
+<tr>
+<td> iPhone 7</td>
+<td>4.7</td>
+<td>375x667</td>
+<td>@2x</td>
+<td>750x1334</td>
+<td></td>
+<td>326</td>
+</tr>
+<tr>
+<td> iPhone 7Plus</td>
+<td>5.5</td>
+<td>414x736</td>
+<td>@3x</td>
+<td>1242x2208</td>
+<td>1080x1920</td>
+<td>401</td>
+</tr>
+<tr>
+<td> iPhone 8</td>
+<td>4.7</td>
+<td>375x667</td>
+<td>@2x</td>
+<td>750x1334</td>
+<td></td>
+<td>326</td>
+</tr>
+<tr>
+<td> iPhone 8Plus</td>
+<td>5.5</td>
+<td>414x736</td>
+<td>@3x</td>
+<td>1242x2208</td>
+<td>1080x1920</td>
+<td>401</td>
+</tr>
+<tr>
+<td> iPhone X</td>
+<td>5.8</td>
+<td>375x812</td>
+<td>@3x</td>
+<td>1125x2436</td>
+<td></td>
+<td>458</td>
+</tr>
+</tbody>
+</table>
+<p>px全称为pixel，是一个点，它不是自然界的长度单位，谁能说出一个“点”有多长多大么？可以画的很小，也可以很大。如果点很小，那画面就清晰，我们称它为“分辨率高”，反之，就是“分辨率低”。所以，“点”的大小是会“变”的，也称为“相对长度”。</p>
+<p>pt全称为point，但中文不叫“点”，查金山词霸可以看到，确切的说法是一个专用的印刷单位“磅”，大小为1/72英寸。所以它是一个自然界标准的长度单位，也称为“绝对长度”。</p>
+<p>pixel是相对大小，</p>
+<p>point是绝对大小。</p>
+<p>开发和UI设计要沟通好，保证按照1：1的比例进行开发，现在ui设计一般都是采取苹果的750x1334分辨率进行设计。苹果开发可以直接参照设计的UI，安卓的需要做个转换，750认为采用的2x，也就是查看页面元素的时候，要除以2，然后按照xxlarge为1：1的尺寸进行开发。<br>res下的xxhdpi为大部分常用机型的分辨率，为了适配大多数机型，采用该分辨率作为开发标准</p>
+<p>####<a name="uiadapter">如何搭建通用的UI页面，能够尽量多的适配不同分辨率</a></p>
+<p>布局文件尽量用相对布局，宽高别用具体数值。文本布局的时候尽量用padding来控制高度。</p>
+<p>当设计到高度或宽度为定值的时候，采用如下适配方式</p>
+<blockquote>
+<p>res                                  </p>
+<blockquote>
+<p>values</p>
+<p>values-480x320  </p>
+<p>values-1920x1080</p>
+</blockquote>
+<p>res</p>
+<blockquote>
+<p>values</p>
+<p>values-sw360dp</p>
+<p>values-sw600dp</p>
+</blockquote>
+</blockquote>
+<p>计算公式：px = dp(dpi/160)</p>
+<p>####<a name="bl">业务逻辑</a></p>
+<p>####<a name="data">数据</a></p>
 <p>####<a name="qnbd">项目整体说明<br>寿险全能保项目，整体上是一个聚合平台，在应用里聚合了如，建议书、寿险出单、车险出单、客户管理、移动柜面等各个其他项目组的项目。<br>为了减少项目之间的耦合，全能保采用混合开发，原生主要搭建整体app运行框架，提供原生的webview浏览器，对接各个系统。</a></p>
 <p>app首页如果</p>
 <p><img src="uploads/home.jpg" alt="sourece"></p>
@@ -318,7 +559,7 @@
 <ul>
 <li>当applicationId（com.n22.sunshine.jzyx）同 package不同的时候，WXEntryActivity.java微信的分享后的回调类，必须放在以applicationId命名的包的下面，否则无法回调 </li>
 </ul>
-<p>####版本库的配置及使用<br>主要的仓库存储地址包括下面几种</p>
+<p>####<a name="versioncenter">版本库的配置及使用<br>主要的仓库存储地址包括下面几种</a></p>
 <table>
 <thead>
 <tr>
@@ -329,15 +570,15 @@
 <tbody>
 <tr>
 <td>mavenCentral()</td>
-<td><a href="https://repo1.maven.org/maven2/" target="_blank" rel="external">https://repo1.maven.org/maven2/</a>  </td>
+<td>https://repo1.maven.org/maven2/  </td>
 </tr>
 <tr>
 <td>jcenter()</td>
-<td><a href="https://bintray.com/" target="_blank" rel="external">https://bintray.com/</a>   </td>
+<td>https://bintray.com/   </td>
 </tr>
 <tr>
 <td>google()</td>
-<td><a href="https://dl.google.com/dl/android/maven2/index.html" target="_blank" rel="external">https://dl.google.com/dl/android/maven2/index.html</a>  </td>
+<td>https://dl.google.com/dl/android/maven2/index.html  </td>
 </tr>
 <tr>
 <td>maven {url ‘链接地址’}</td>
@@ -460,7 +701,7 @@
 <p>implementation：仅仅将你引用到的此 module 在内部使用，而不将其接口暴露给外部</p>
 <p>api：通过你自己的接口将你引用到的 module 接口暴露出去供其他 module 使用</p>
 <p>例如：module模块msclib下的libs/msc.jar文件，使用implementation关键字，app无法引用，替换成api关键字，可以引用</p>
-<p>####网络模型(com.sinosig.almightytreasure.net)</p>
+<p>####<a name="net">网络模型(com.sinosig.almightytreasure.net)</a></p>
 <p>#####网络请求整体流程<br>HttpUtils.java类,该类用于串联被观察者(Observable)和观察者(Observer),把二者放在一个事件流里面。该类可以做网络加载前的一些处理，<br>比如获取本地存储的数据，做为结果返回。<br>被观察者由ApiService组成，ApiService.java接口类用于存储所有网络请求接口。<br>ApiConstants.java接口类，用于存放所有接口请求的地址，包括服务http地址（gradle之前配置过的地址）<br>Api.java类，用于初始化OkHttp网络请求<br>观察者由ProgressSubscriber组成，用于处理接口返回的数据<br>ApiException.java类，结果运行时异常处理类，比如当网络异常时，会回调到该类</p>
 <p>#####网络对话框的管理<br>ProgressSubscriber.java类(观察者)，当调用者Presenter发起网络请求的时候，<br>会初始化一个progresssubscriber观察者，并将该观察者订阅给被观察者(Observable)，当被观察者的动作完成后，正常会回调到onComplete()<br>异常会回调到onError()，然后在这两个方法里取消对话框</p>
 <p>#####异常的统一处理<br>ProgressSubscriber.java类，再该类的onError()方法处理，包含ApiException异常,和接口请求异常，该类返回是在RxHelper.java类的<br>handleResult方法里</p>
@@ -473,7 +714,7 @@
 <p>将定义好的converter转换器添加到Retrofit中</p>
 <p>#####自定义拦截器(Interceptor)<br>UnsafeOkHttpClient.java类，实现了自定义拦截器，控制网络请求的Log输出，debug级别输出日志，release关闭日志输出</p>
 <p>RequestInterceptor.java类，当请求网络接口时候，需要统一设置请求头(header)或请求体(body)时，可以自定义拦截器，进行预处理</p>
-<p>####App H5交互(com.sinosig.sunshinelife.utilityplatform.web)</p>
+<p>####<a name="apph">App H5交互(com.sinosig.sunshinelife.utilityplatform.web)</a></p>
 <h5 id="WebView的初始化"><a href="#WebView的初始化" class="headerlink" title="WebView的初始化"></a>WebView的初始化</h5><p>定义用户自己的WebView(UIWebView)，用于配置统一处理WebSettings、cookie、封装javascript</p>
 <p>添加Javascript接口，调用方法addJavascriptInterface(new NativeWebViewProxy(), “Native”);将NativeWebViewProxy代理类实现的所有方法注入webview，用于h5调用，调用方式如：Native.shareTimeline()，Native为添加方法的时候起的别名,对应addJavascriptInterface方法的第二个参数，shareTimeline()为NativeWebViewProxy()类的实现方法</p>
 <p>调用h5url之前设置cookie用于传送(登录信息)数据给h5，</p>
@@ -498,8 +739,6 @@
 <p>权限申请(rxpermissions),该类库可以一次申请多个权限.</p>
 <p>h5调用原生方法，进行UI更改的时候</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">runOnUiThread(new Runnable() &#123;</span><br><span class="line">      @Override public void run() &#123;</span><br><span class="line">      //进行更改</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>####MVP的具体应用</p>
-
           
         
       
